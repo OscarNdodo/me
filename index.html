@@ -37,27 +37,30 @@
   </footer>
   
   <script>
-const username = "OscarNdodo"; // ⬅️ Substitua pelo seu nome de usuário
+const token = "OscarNdodo"; // ⬅️ Substitua pelo seu token
+const username = "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"; // ⬅️ Substitua pelo seu nome de usuário
 
-fetch(`https://api.github.com/users/${username}/repos`)
-      .then(response => response.json())
-      .then(repos => {
-        const container = document.getElementById('repos');
-        repos.forEach(repo => {
-          const li = document.createElement('li');
-          li.className = 'repo-item';
-          li.innerHTML = `
-            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-            ${repo.description ? `<p>${repo.description}</p>` : ''}
-          `;
-          container.appendChild(li);
-        });
-      })
-      .catch(error => {
-        document.getElementById('repos').innerHTML = '<li>Erro ao carregar repositórios.</li>';
-        console.error(error);
-      });
-
+fetch("https://api.github.com/user/repos?per_page=100", {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+})
+  .then(res => res.json())
+  .then(repos => {
+    const container = document.getElementById("repos");
+    repos.forEach(repo => {
+      const li = document.createElement("li");
+      li.className = "repo-item";
+      li.innerHTML = `
+        <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+        ${repo.description ? `<p>${repo.description}</p>` : ""}
+      `;
+      container.appendChild(li);
+    });
+  })
+  .catch(err => {
+    console.error("Erro ao buscar repositórios:", err);
+  });
   </script>
 
 </body>
