@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Portfólio - GitHub</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+    }
+    
+    li {
+      font-size: 14px;
+      margin: 20px 0;
+      margin-left: -20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <img src="https://github.com/oscarndodo.png" style="width: 120px; border-radius: 100%;" />
+  <h1 style="display: flex; "><img src="https://icons.iconarchive.com/icons/bokehlicia/captiva/256/rocket-icon.png" style="width: 60px; margin-top: 5px; margin-right: 10px;" />Óscar Ndodo <br> Fullstack Developer</h1>
+  
+  <h2>Projects</h2>
+  
+  <ul class="repo-list" id="repos"></ul>
+
+  <footer>
+    <span style="font-size: 12px; margin: 20px 0;">
+      by Oscar Ndodo | &copy;2025
+    </span>
+  </footer>
+  
+  <script>
+const username = "OscarNdodo"; // ⬅️ Substitua pelo seu nome de usuário
+
+fetch(`https://api.github.com/users/${username}/repos`)
+      .then(response => response.json())
+      .then(repos => {
+        const container = document.getElementById('repos');
+        repos.forEach(repo => {
+          const li = document.createElement('li');
+          li.className = 'repo-item';
+          li.innerHTML = `
+            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+            ${repo.description ? `<p>${repo.description}</p>` : ''}
+          `;
+          container.appendChild(li);
+        });
+      })
+      .catch(error => {
+        document.getElementById('repos').innerHTML = '<li>Erro ao carregar repositórios.</li>';
+        console.error(error);
+      });
+
+  </script>
+
+</body>
+</html>
