@@ -1,6 +1,6 @@
 # 💼 Meu Portfólio Pessoal
 
-Bem-vindo ao meu portfólio! Este projeto foi criado para apresentar minhas habilidades, experiências e trabalhos desenvolvidos ao longo da minha jornada profissional e acadêmica.
+Bem-vindo ao meu portfólio! Este projeto foi criado para apresentar minhas habilidades, experiências e trabalhos desenvolvidos ao longo da minha jornada profissional.
 
 ## 📌 Visão Geral
 
