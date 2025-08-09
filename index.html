@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,32 +13,94 @@
       margin: 0;
       padding: 2rem;
     }
-    
+
+    header {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 20px 0;
+    }
+
     li {
       font-size: 14px;
       margin: 20px 0;
       margin-left: -20px;
     }
 
+    a:active {
+      color: red;
+    }
+
+    .projects {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    @media (max-width: 480px) {
+      .projects {
+        display: block;
+      }
+      header {
+        display: block;
+      }
+      #repos-title {
+        margin-top: 20px;
+      }
+    }
+
+    #cv:hover {
+      opacity: .8;
+      transform: scale(.95);
+    }
   </style>
 </head>
+
 <body>
+  <header>
+    <div id="bio">
+      <img src="https://github.com/oscarndodo.png" style="width: 120px; border-radius: 100%;" />
+      <h1 style="display: flex; ">ÓSCAR NDODO <br> Fullstack Developer</h1>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <a id="cv" href="oscar_ndodo_cv.pdf" download="" style="margin-top: 20px; border-radius: 5px; color: white; text-decoration: none; padding: 10px 50px; background-color: #333;">Baixar CV</a>
+    </div>
+  </header>
+  <hr>
 
-  <img src="https://github.com/oscarndodo.png" style="width: 120px; border-radius: 100%;" />
-  <h1 style="display: flex; ">ÓSCAR NDODO <br> Fullstack Developer</h1>
-  
-  <h2>Projectos Publicos</h2>
-  
-  <ul class="repo-list" id="repos"></ul>
+  <main class="projects">
+    <div>
+      <h2><span style="border-bottom: 5px solid #333;">Projectos</span> Online</h2>
 
+      <ol>
+        <li><a href="https://ceprone.com">Ceprone</a> Website & Blog</li>
+        <li><a href="https://quikacv.com">QuikaCV</a> Geração de CV & Outros</li>
+        <li><a href="https://imagemagency.com">Agência Imagem</a> Website</li>
+        <li><a href="https://simmiruku.co.mz">SIMMiruku</a> Gestão de Projectos</li>
+        <li><a href="https://agc.wooneya.co.mz">Agência Crescer</a> Gestão de LEADs</li>
+        <li><a href="https://warestaindex.com">WarestaIndex</a> Tendências do mercado(Waresta)</li>
+        <li><a href="https://sabore.site">Sabores</a> Geração & partilha de receitas</li>
+        <li><a href="https://menuqer.site">MenuQR</a> Pedidos por QRCode</li>
+        <li><a href="https://traduza.netlify.app">Traduza</a> Tradutor de texto</li>
+        <li><a href="https://giteer.vercel.app">Giteer</a> GitHub README como doc.</li>
+      </ol>
+    </div>
+
+    <div>
+
+      <h2 id="repos-title"><span style="border-bottom: 5px solid #333;">Repositórios</span> Públicos</h2>
+
+      <ul class="repo-list" id="repos"></ul>
+
+    </div>
+  </main>
+  <hr>
   <footer>
     <span style="font-size: 12px; margin: 20px 0;">
-      by Oscar Ndodo | &copy;2025 <a href="https://linktr.ee/devndodo" style="" >Contactos</a>
+      by Oscar Ndodo | &copy;2025 <a href="https://linktr.ee/devndodo" style="">Contactos</a>
     </span>
   </footer>
-  
+
   <script>
-const username = "OscarNdodo"; // ⬅️ Troque aqui
+    const username = "OscarNdodo"; // ⬅️ Troque aqui
 
     fetch(`https://api.github.com/users/${username}/repos`)
       .then(response => response.json())
@@ -60,4 +123,5 @@ const username = "OscarNdodo"; // ⬅️ Troque aqui
   </script>
 
 </body>
+
 </html>
